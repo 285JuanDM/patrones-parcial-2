@@ -6,7 +6,7 @@ const { clients, users, refreshTokens } = require("../config/data");
 const router = express.Router();
 
 const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
-const ACCESS_TOKEN_EXPIRATION = "1m";
+const ACCESS_TOKEN_EXPIRATION = "2m";
 const REFRESH_TOKEN_EXPIRATION = 5 * 60 * 1000;
 
 function generateAccessToken(payload, scopes) {
@@ -43,7 +43,7 @@ router.post("/token", (req, res) => {
       return res.json({
         access_token: accessTokenCC,
         token_type: "Bearer",
-        expires_in: 60,
+        expires_in: ACCESS_TOKEN_EXPIRATION,
         scope: client.scopes.join(" ")
       });
 
@@ -64,7 +64,7 @@ router.post("/token", (req, res) => {
         access_token: accessTokenPW,
         refresh_token: refreshToken,
         token_type: "Bearer",
-        expires_in: 60,
+        expires_in: ACCESS_TOKEN_EXPIRATION,
         scope: user.scopes.join(" ")
       });
 

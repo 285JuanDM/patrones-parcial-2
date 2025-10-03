@@ -4,7 +4,6 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-// Importar servidores
 const authServer = require("./auth/authorizationServer");
 const resourceServer = require("./api/resourceServer");
 
