@@ -6,7 +6,7 @@ const { clients, users, refreshTokens } = require("../config/data");
 const router = express.Router();
 
 const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
-const ACCESS_TOKEN_EXPIRATION = "2m";
+const ACCESS_TOKEN_EXPIRATION = "1m";
 const REFRESH_TOKEN_EXPIRATION = 5 * 60 * 1000;
 
 function generateAccessToken(payload, scopes) {
