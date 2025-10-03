@@ -29,6 +29,7 @@ router.post("/token", (req, res) => {
   const { grant_type, client_id, client_secret, username, password, refresh_token } = req.body;
 
   const client = clients.find(c => c.clientId === client_id && c.clientSecret === client_secret);
+  
   if (!client) {
     return res.status(401).json({ error: "Invalid client credentials" });
   }
